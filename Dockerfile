@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 ENV PATH /opt/conda/bin:$PATH
-RUN mkdir /home/dronelab/Developer
+RUN mkdir -p /home/dronelab/Developer
 COPY xilinx_dnndk_v3.1_190809.tar.gz /home/dronelab/Developer
 
 RUN apt-get update && apt-get install -y \
