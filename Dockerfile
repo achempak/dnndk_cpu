@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 ENV PATH /opt/conda/bin:$PATH
-RUN mkdir /home/Developer
-COPY xilinx_dnndk_v3.1_190809.tar.gz /home/Developer
+RUN mkdir /home/dronelab/Developer
+COPY xilinx_dnndk_v3.1_190809.tar.gz /home/dronelab/Developer
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     wget && \
     \
-    tar -xvzf /home/Developer/xilinx_dnndk_v3.1_190809.tar.gz -C /home/Developer && \
-    rm /home/Developer/xilinx_dnndk_v3.1_190809.tar.gz && \
+    tar -xvzf /home/dronelab/Developer/xilinx_dnndk_v3.1_190809.tar.gz -C /home/dronelab/Developer && \
+    rm /home/dronelab/Developer/xilinx_dnndk_v3.1_190809.tar.gz && \
     \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda2-4.7.12.1-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
@@ -28,12 +28,12 @@ RUN apt-get update && apt-get install -y \
 
 SHELL ["/bin/bash", "-c"]
 RUN source activate decent && \
-    pip install /home/Developer/xilinx_dnndk_v3.1/host_x86/decent-tf/ubuntu18.04/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl && \
+    pip install /home/dronelab/Developer/xilinx_dnndk_v3.1/host_x86/decent-tf/ubuntu18.04/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl && \
     #pip install numpy opencv-python sklearn scipy progressbar2
     conda install numpy opencv sklearn scipy progresbar2 pillow
 
-WORKDIR /home/Developer/xilinx_dnndk_v3.1/host_x86
+WORKDIR /home/dronelab/Developer/xilinx_dnndk_v3.1/host_x86
 SHELL ["/bin/bash", "-c"]
 RUN "./install.sh" || true
 
-WORKDIR /home
+WORKDIR /home/dronelab
