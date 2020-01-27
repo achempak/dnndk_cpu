@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
 SHELL ["/bin/bash", "-c"]
 RUN source activate decent && \
     pip install /home/dronelab/Developer/xilinx_dnndk_v3.1/host_x86/decent-tf/ubuntu18.04/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl && \
-    pip install numpy opencv-python sklearn scipy progressbar2
+    pip install numpy opencv-python sklearn scipy progressbar2 Pillow
     #conda install numpy opencv sklearn scipy progresbar2 pillow
 
 WORKDIR /home/dronelab/Developer/xilinx_dnndk_v3.1/host_x86
